@@ -1,34 +1,34 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
-from PyQt5.QtCore import QSize, Qt
 import sys
 
-
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QTextEdit
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.setMouseTracking(True)
+        self.label = QLabel("Click this window")
+        self.label.setMouseTracking(True)
+        self.setCentralWidget(self.label)
+    
+    def mouseMoveEvent(self, e):
+        self.label.setText("mouseMoveEvent")
 
-        self.button_is_checked = True
+    def mousePressEvent(self, e):
+        self.label.setText("mousePressEvent")
 
-        self.setWindowTitle("My App")
+    def mouseReleaseEvent(self, e):
+        self.label.setText("mouseReleaseEvent")
 
-        self.button = QPushButton("Press Me!")
-        self.button.setCheckable(True)
-        self.button.clicked.connect(self.on_button_click)
-
-        self.setCentralWidget(self.button)
-
-    def on_button_click(self):
-        self.button.setText("Already clicked.")
-        self.button.setEnabled(False)
-        self.setWindowTitle("My Single-use App")
+    def mouseDoubleClickEvent(self, e):
+        self.label.setText("mouseDoubleClickEvent")
 
 
 app = QApplication(sys.argv)
 
+
 window = MainWindow()
 window.show()
-
 
 app.exec()
