@@ -16,13 +16,36 @@ class MainWindow(QMainWindow):
         self.label.setText("mouseMoveEvent")
 
     def mousePressEvent(self, e):
-        self.label.setText("mousePressEvent")
+        if e.button() == Qt.LeftButton:
+            self.label.setText("LEFTmousepressevent")
+        
+        elif e.button() == Qt.MiddleButton:
+            self.label.setText("MIDDLEmousepressevent")
+
+        elif e.button() == Qt.RightButton:
+            self.label.setText("RIGHTmousepressevent")
+
 
     def mouseReleaseEvent(self, e):
-        self.label.setText("mouseReleaseEvent")
+        if e.button() == Qt.LeftButton:
+            self.label.setText("LEFTmousereleaseevent")
+        
+        elif e.button() == Qt.MiddleButton:
+            self.label.setText("MIDDLEmousereleaseevent")
+
+        elif e.button() == Qt.RightButton:
+            self.label.setText("RIGHTmousereleaseevent")
+
 
     def mouseDoubleClickEvent(self, e):
-        self.label.setText("mouseDoubleClickEvent")
+        if e.button() == Qt.LeftButton:
+            self.label.setText("LEFTmouseDoubleclickeEvent")
+        
+        elif e.button() == Qt.MiddleButton:
+            self.label.setText("MIDDLEmouseDoubleclickeEvent")
+
+        elif e.button() == Qt.RightButton:
+            self.label.setText("RIGHTmouseDoubleclickEvent")
 
 
 app = QApplication(sys.argv)
